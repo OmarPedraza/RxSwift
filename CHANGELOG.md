@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+* Add observable for `tabBarController(_:,shouldSelect:)` delegate method. #2175
 * Fix `DelegateProxy` call to `layoutIfNeeded` for an object without a window. #2076
 
 ## [5.1.1](https://github.com/ReactiveX/RxSwift/releases/tag/5.1.1)

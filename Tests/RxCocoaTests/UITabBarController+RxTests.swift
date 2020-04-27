@@ -109,5 +109,28 @@ extension UITabBarControllerTests {
         
         XCTAssertEqual(returnedViewController, viewController)
     }
+
+    func testShouldSelect() {
+        let subject = createSubject()
+
+        var shouldSelect = false
+        var returnedShouldSelect = true
+
+        let viewController = UIViewController()
+        var returnedViewController = UIViewController()
+
+        XCTAssertNotEqual(returnedShouldSelect, shouldSelect)
+        XCTAssertNotEqual(returnedViewController, viewController)
+
+        _ = subject.rx.shouldSelect.subscribe(onNext: {
+            returnedShouldSelect = $0.0
+            returnedViewController = $0.1
+        })
+
+        shouldSelect = subject.delegate!.tabBarController!(subject, shouldSelect: viewController)
+
+        XCTAssertEqual(returnedShouldSelect, shouldSelect)
+        XCTAssertEqual(returnedViewController, viewController)
+    }
 }
 #endif
